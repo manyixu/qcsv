@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.converter;
+package com.github.gin.qcsv.converter;
 
 public class LongConverter implements Converter{
 
@@ -16,5 +16,12 @@ public class LongConverter implements Converter{
 			return nullable ? null : 0l;
 		}
 	}
+
+    @Override
+    public String convert(Object object) {
+        Long l = (Long) object;
+        return l.toString();
+    }
+
 
 }

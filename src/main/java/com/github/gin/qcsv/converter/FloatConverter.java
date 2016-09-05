@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.converter;
+package com.github.gin.qcsv.converter;
 
 public class FloatConverter implements Converter{
 
@@ -16,4 +16,10 @@ public class FloatConverter implements Converter{
 			return nullable ? null : 0f;
 		}
 	}
+
+    @Override
+    public String convert(Object object) {
+        Float f = (Float) object;
+        return f.toString();
+    }
 }

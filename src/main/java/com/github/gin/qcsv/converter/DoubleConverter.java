@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.converter;
+package com.github.gin.qcsv.converter;
 
 public class DoubleConverter implements Converter{
 
@@ -17,5 +17,11 @@ public class DoubleConverter implements Converter{
 		}
 		
 	}
+
+    @Override
+    public String convert(Object object) {
+        Double d = (Double) object;
+        return d.toString();
+    }
 
 }

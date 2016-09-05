@@ -1,12 +1,12 @@
-package org.github.gin.qcsv.importer;
+package com.github.gin.qcsv.importer;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
-import org.github.gin.qcsv.converter.TypeConverter;
-import org.github.gin.qcsv.util.BeanUtil;
-import org.github.gin.qcsv.vo.CSVList;
-import org.github.gin.qcsv.vo.CSVVO;
+import com.github.gin.qcsv.converter.TypeConverter;
+import com.github.gin.qcsv.util.BeanUtil;
+import com.github.gin.qcsv.vo.CSVList;
+import com.github.gin.qcsv.vo.CSVVO;
 
 import java.io.File;
 import java.io.IOException;
@@ -20,14 +20,23 @@ import java.util.List;
  */
 public class CSVImporter<T> {
 
-    public List<T> importCSV(File file,Class<T> clazz,Charset charset){
+    private Class<T> clazz;
+
+    private CSVFormat csvFormat;
+
+    private CSVList csvList;
+
+    public CSVImporter(Class<T> clazz){
+        this.clazz = clazz;
+        csvList = BeanUtil.getCSVList(clazz);
+        csvFormat = CSVFormat.DEFAULT.withHeader(csvList.getHeaders()).withSkipHeaderRecord();
+    }
+
+    public List<T> importCSV(File file,Charset charset){
         List<T> list = new ArrayList<>();
 
-        CSVList csvList = BeanUtil.getCSVList(clazz);
-        CSVFormat csvFormat = CSVFormat.DEFAULT.withHeader(csvList.getHeaders());
-
         try {
-            CSVParser p = CSVParser.parse(file, charset, csvFormat.withSkipHeaderRecord());
+            CSVParser p = CSVParser.parse(file, charset, csvFormat);
             Iterator<CSVRecord> iterator = p.iterator();
 
             while (iterator.hasNext()){
@@ -45,5 +54,13 @@ public class CSVImporter<T> {
             e.printStackTrace();
         }
         return list;
+    }
+
+    public CSVFormat getCsvFormat() {
+        return csvFormat;
+    }
+
+    public void setCsvFormat(CSVFormat csvFormat) {
+        this.csvFormat = csvFormat;
     }
 }

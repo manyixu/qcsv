@@ -1,4 +1,4 @@
-import org.github.gin.qcsv.annotation.CSV;
+import com.github.gin.qcsv.annotation.CSV;
 
 import java.util.Date;
 

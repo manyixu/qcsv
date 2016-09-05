@@ -1,11 +1,12 @@
-package org.github.gin.qcsv.util;
+package com.github.gin.qcsv.util;
 
-import org.github.gin.qcsv.annotation.CSV;
-import org.github.gin.qcsv.vo.CSVList;
-import org.github.gin.qcsv.vo.CSVVO;
+import com.github.gin.qcsv.annotation.CSV;
+import com.github.gin.qcsv.vo.CSVList;
+import com.github.gin.qcsv.vo.CSVVO;
 
 import java.beans.IntrospectionException;
 import java.beans.PropertyDescriptor;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -92,5 +93,14 @@ public class BeanUtil {
         return res;
     }
 
-
+    public static<T> Object getCSVValue(String header,Object instance){
+        for(Field field : instance.getClass().getDeclaredFields()){
+            if(field.isAnnotationPresent(CSV.class)){
+                CSV csv = field.getAnnotation(CSV.class);
+                if(header.equals(csv.name()))
+                    return getValue(field.getName(),instance);
+            }
+        }
+        return null;
+    }
 }

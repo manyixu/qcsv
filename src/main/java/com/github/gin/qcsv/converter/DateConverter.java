@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.converter;
+package com.github.gin.qcsv.converter;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -22,6 +22,13 @@ public class DateConverter implements Converter{
 		} catch (ParseException e) {}
 		return date;
 	}
+
+    @Override
+    public String convert(Object object) {
+        Date date = (Date) object;
+        DateFormat format = new SimpleDateFormat(dateFormat);
+        return format.format(date);
+    }
 
     public String getDateFormat() {
         return dateFormat;

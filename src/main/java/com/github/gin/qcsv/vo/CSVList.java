@@ -1,8 +1,9 @@
-package org.github.gin.qcsv.vo;
+package com.github.gin.qcsv.vo;
+
+import com.github.gin.qcsv.annotation.CSV;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by FSTMP on 2016/9/2.
@@ -22,5 +23,22 @@ public class CSVList extends ArrayList<CSVVO> {
             headers[i] = vo.getName();
         }
         return headers;
+    }
+
+    public Class<?> getFieldType(String name){
+        for(CSVVO csvvo : this){
+            if(name.equals(csvvo.getName())){
+                return csvvo.getFieldType();
+            }
+        }
+        return null;
+    }
+
+    public CSVVO get(String name){
+        for(CSVVO csvvo : this){
+            if(name.equals(csvvo.getName()))
+                return csvvo;
+        }
+        return null;
     }
 }

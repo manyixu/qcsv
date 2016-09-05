@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.converter;
+package com.github.gin.qcsv.converter;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -35,5 +35,19 @@ public class TypeConverter {
             dateConverter.setDateFormat(format);
         }
         return converter.convert(dataText);
+    }
+
+    public static String convert(Object object,Class<?> fieldType){
+        Converter converter = TYPE_HOLDER.get(fieldType);
+        return converter.convert(object);
+    }
+
+    public static String convert(Object object,Class<?> fieldType,String format){
+        Converter converter = TYPE_HOLDER.get(fieldType);
+        if(converter instanceof DateConverter){
+            DateConverter dateConverter = (DateConverter) converter;
+            dateConverter.setDateFormat(format);
+        }
+        return converter.convert(object);
     }
 }

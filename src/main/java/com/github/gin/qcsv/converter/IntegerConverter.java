@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.converter;
+package com.github.gin.qcsv.converter;
 
 public class IntegerConverter implements Converter{
 
@@ -16,5 +16,11 @@ public class IntegerConverter implements Converter{
             return nullable ? null : 0;
 		}
 	}
+
+    @Override
+    public String convert(Object object) {
+        Integer i = (Integer) object;
+        return i.toString();
+    }
 
 }

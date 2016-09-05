@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.vo;
+package com.github.gin.qcsv.vo;
 
 /**
  * Created by FSTMP on 2016/9/2.

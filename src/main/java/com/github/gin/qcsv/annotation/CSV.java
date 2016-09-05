@@ -1,4 +1,4 @@
-package org.github.gin.qcsv.annotation;
+package com.github.gin.qcsv.annotation;
 
 import java.lang.annotation.*;
 
