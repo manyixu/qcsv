@@ -18,14 +18,11 @@ import java.util.List;
  */
 public class CSVExporter<T> {
 
-    private Class<T> clazz;
-
     private CSVFormat csvFormat;
 
     private CSVList csvList;
 
     public CSVExporter(Class<T> clazz){
-        this.clazz = clazz;
         csvList = BeanUtil.getCSVList(clazz);
         csvFormat = CSVFormat.DEFAULT.withHeader(csvList.getHeaders());
     }

@@ -10,15 +10,15 @@ import java.util.Collection;
 /**
  * Created by FSTMP on 2016/9/5.
  */
-public class CSVExportUtil<T> {
+public class CSVExportUtil {
 
-    public static<T> void exportCSV(File dist,Class<T> clazz,Collection<T> datas,Charset charset){
-        CSVExporter<T> csvExporter = new CSVExporter<>(clazz);
+    public static void exportCSV(File dist,Class<?> clazz,Collection<?> datas,Charset charset){
+        CSVExporter csvExporter = new CSVExporter(clazz);
         csvExporter.exportCSV(dist,datas,charset);
     }
 
-    public static<T> void exportCSV(File dist,Class<T> clazz,Collection<T> datas,Charset charset,CSVFormat csvFormat){
-        CSVExporter<T> csvExporter = new CSVExporter<>(clazz);
+    public static void exportCSV(File dist,Class<?> clazz,Collection<?> datas,Charset charset,CSVFormat csvFormat){
+        CSVExporter csvExporter = new CSVExporter(clazz);
         csvExporter.setCsvFormat(csvFormat);
         csvExporter.exportCSV(dist,datas,charset);
     }
