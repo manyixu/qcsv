@@ -1,12 +1,10 @@
 package com.github.gin.qcsv.vo;
 
-import com.github.gin.qcsv.annotation.CSV;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
- * Created by FSTMP on 2016/9/2.
+ * Created by GinPonson on 2016/9/2.
  */
 public class CSVList extends ArrayList<CSVVO> {
 
