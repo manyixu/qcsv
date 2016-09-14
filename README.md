@@ -6,7 +6,8 @@ qcsv
 ##qcsv操作csv文件
 
 1.注解,导入导出都是基于@CSV注解的,实体上做上注解。<br>
-@CSV注解使用在实体的字段上，name是该字段导入导出csv文件的标题，dateFormat是时间格式(可选)
+@CSV注解使用在实体的字段上，name是该字段导入导出csv文件的标题，dateFormat是时间格式(可选)<br>
+字段注解的顺序需要和文件标题的顺序一致。
 
 ```Java
 public class Student {
