@@ -8,8 +8,7 @@ import com.github.gin.qcsv.util.BeanUtil;
 import com.github.gin.qcsv.vo.CSVList;
 import com.github.gin.qcsv.vo.CSVVO;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -33,12 +32,21 @@ public class CSVImporter<T> {
     }
 
     public List<T> importCSV(File file,Charset charset){
+        FileInputStream in = null;
+        try {
+            in = new FileInputStream(file);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        return importCSV(in,charset);
+    }
+
+    public List<T> importCSV(InputStream in ,Charset charset){
         List<T> list = new ArrayList<>();
 
         try {
-            CSVParser p = CSVParser.parse(file, charset, csvFormat);
+            CSVParser p = new CSVParser(new InputStreamReader(in,charset),csvFormat);
             Iterator<CSVRecord> iterator = p.iterator();
-
             while (iterator.hasNext()){
                 CSVRecord csvRecord = iterator.next();
 
@@ -48,7 +56,6 @@ public class CSVImporter<T> {
                     BeanUtil.setValue(csvvo.getFieldName(),instance,fieldValue);
                 }
                 list.add(instance);
-
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by FSTMP on 2016/9/5.
  */
-public class CSVImportUtil<T> {
+public class CSVImportUtil {
 
     public static<T> List<T> importCSV(File file,Class<T> clazz,Charset charset){
         CSVImporter<T> csvImporter = new CSVImporter<>(clazz);
