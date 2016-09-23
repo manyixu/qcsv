@@ -3,7 +3,7 @@ package com.github.gin.qcsv.annotation;
 import java.lang.annotation.*;
 
 /**
- * Created by FSTMP on 2016/9/2.
+ * Created by GinPonson on 2016/9/2.
  */
 @Documented
 @Inherited

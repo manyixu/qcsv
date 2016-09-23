@@ -12,7 +12,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * Created by FSTMP on 2016/9/2.
+ * Created by GinPonson on 2016/9/2.
  */
 public class BeanUtil {
 
